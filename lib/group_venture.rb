@@ -1,6 +1,10 @@
-require "group_venture/version"
+require 'open-uri'
+require 'nokogiri'
+#require 'httparty'
 
-module GroupVenture
-  class Error < StandardError; end
-  # Your code goes here...
-end
+#require 'pry'
+
+
+require_relative "./group_venture/version"
+require_relative "./group_venture/coin"
+require_relative "./group_venture/cli"

@@ -1,0 +1,6 @@
+#!/usr/bin/ruby
+ #require "bundler/setup"
+ require "./lib/group_venture"
+
+
+GroupVenture::CLI.new.call

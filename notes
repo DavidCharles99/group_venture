@@ -1,0 +1,29 @@
+def self.today
+  puts <<-DOC.gsub /^\s+/, ""
+  1. Bitcoin  | $3,200   | v = $6,425,757,066  | mc = $63,660,578,603
+  2. ether    | $122     | v = $3,425,757,066  | mc = $13,660,578,603
+  3. XRP      | $.03     | v = $425,757,066    | mc = $13,660,578,603
+  DOC
+  #self.scrape_coins
+
+end
+
+------
+
+coin_1 = self.new
+coin_1.name = "Bitcoin"
+coin_1.price = "$3,200"
+coin_1.v = "$6,425,757,066"
+coin_1.mc = "$63,660,578,603"
+#coin_1.url = "https://coinmarketcap.com/currencies/bitcoin"
+
+
+coin_2 = self.new
+coin_2.name = "ether"
+coin_2.price = "$3,200"
+coin_2.v = "$6,425,757,066"
+coin_2.mc = "$63,660,578,603"
+# coin_2.url = "https://coinmarketcap.com/currencies/ethereum"
+
+
+[coin_1, coin_2]

@@ -1,5 +1,7 @@
 require "bundler/setup"
-require "group_venture"
+require  "./lib/group_venture"
+
+#require "group_venture"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
