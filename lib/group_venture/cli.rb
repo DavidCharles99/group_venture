@@ -34,6 +34,7 @@ class GroupVenture::CLI
         if usin == "y"
         @@counter1 += 1
         puts "you have #{@@counter1} bitcoin"
+        top_icos
         else
           top_icos
         end
@@ -45,6 +46,7 @@ class GroupVenture::CLI
         if usin == "y"
           @@counter2 += 1
           puts "you have #{@@counter2} ethereum"
+          top_icos
         else
           top_icos
         end
@@ -56,6 +58,7 @@ class GroupVenture::CLI
         if usin == "y"
           @@counter3 += 1
           puts "you have #{@@counter3} ripple"
+          top_icos
         else
           top_icos
         end
