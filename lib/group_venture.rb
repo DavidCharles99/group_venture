@@ -8,3 +8,4 @@ require 'nokogiri'
 require_relative "./group_venture/version"
 require_relative "./group_venture/coin"
 require_relative "./group_venture/cli"
+require_relative "./group_venture/scraper"

@@ -1,6 +1,5 @@
 #controller
 class GroupVenture::CLI
-  attr_accessor :counter1, :counter2, :counter3
   @@counter1 = 0
   @@counter2 = 0
   @@counter3 = 0
@@ -12,13 +11,21 @@ class GroupVenture::CLI
 
   def top_icos
     puts "top ICO's"
-    @coins = GroupVenture::Coin.scrape_coins
-    @coins.each do |coin|
-      @coin_mc = coin.mc
+    @forge = GroupVenture::Coin.scrape_coins
+    @forge.each do |coin|
       puts "#{coin.name}  #{coin.price}"
     end
   end
 
+  def list
+    puts "       "
+    puts "bitcoin"
+    puts "       "
+    puts "xrp"
+    puts "       "
+    puts "ether"
+    puts "       "
+  end
 
   def menu
     input = nil
@@ -28,39 +35,39 @@ class GroupVenture::CLI
       case input
 
       when "bitcoin"
-        puts "#{GroupVenture::Coin.scrape_coins[0].mc}"
+        puts "#{GroupVenture::Coin.all[0].mc}"
         puts "type y/n to buy"
         usin = gets.strip.downcase
         if usin == "y"
         @@counter1 += 1
         puts "you have #{@@counter1} bitcoin"
-        top_icos
-        else
-          top_icos
+        list
+      else
+        list
         end
 
       when "ether"
-        puts "#{GroupVenture::Coin.scrape_coins[1].mc}"
+        puts "#{GroupVenture::Coin.all[1].mc}"
         puts "type y/n to buy"
         usin = gets.strip.downcase
         if usin == "y"
           @@counter2 += 1
           puts "you have #{@@counter2} ethereum"
-          top_icos
+          list
         else
-          top_icos
+          list
         end
 
       when "xrp"
-        puts "#{GroupVenture::Coin.scrape_coins[2].mc}"
+        puts "#{GroupVenture::Coin.all[2].mc}"
         puts "type y/n to buy"
         usin = gets.strip.downcase
         if usin == "y"
           @@counter3 += 1
           puts "you have #{@@counter3} ripple"
-          top_icos
+          list
         else
-          top_icos
+          list
         end
 
       when "wallet"
