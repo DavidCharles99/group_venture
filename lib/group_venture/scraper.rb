@@ -1,5 +1,5 @@
 class GroupVenture::Scraper
-  
+
 
   def self.scrape_bitcoin
     doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/bitcoin/"))
