@@ -10,7 +10,7 @@ class GroupVenture::CLI
 
   def top_icos
     puts "top ICO's"
-    forge = GroupVenture::Coin.scrape_coins
+    forge = GroupVenture::Scraper.scrape_coins
     forge.each do |coin|
       puts "#{coin.name}  #{coin.price}"
     end
@@ -18,13 +18,14 @@ class GroupVenture::CLI
 
   def menu
     input = nil
+    data = GroupVenture::Scraper.scrape_coins
     while input != "exit"
       puts "enter the name of the coin for more information or type 'exit':"
       input = gets.strip.downcase
       case input
 
       when "bitcoin"
-        phrase = GroupVenture::Coin.all[0].mc.gsub("\n\n\n", "\n-------------------------\n")
+        phrase = data[0].mc.gsub("\n\n\n", "\n-------------------------\n")
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
@@ -38,7 +39,7 @@ class GroupVenture::CLI
         end
 
       when "ether"
-        phrase = GroupVenture::Coin.all[1].mc.gsub("\n\n\n", "\n-------------------------\n")
+        phrase = data[1].mc.gsub("\n\n\n", "\n-------------------------\n")
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
@@ -52,7 +53,7 @@ class GroupVenture::CLI
         end
 
       when "xrp"
-        phrase = GroupVenture::Coin.all[2].mc.gsub("\n\n\n", "\n-------------------------\n")
+        phrase = data[2].mc.gsub("\n\n\n", "\n-------------------------\n")
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase

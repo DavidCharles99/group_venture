@@ -1,5 +1,11 @@
 class GroupVenture::Scraper
-
+  @@coins = []
+  def self.scrape_coins
+      @@coins << self.scrape_bitcoin
+      @@coins << self.scrape_ether
+      @@coins << self.scrape_xrp
+      @@coins
+    end
 
   def self.scrape_bitcoin
     doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/bitcoin/"))
