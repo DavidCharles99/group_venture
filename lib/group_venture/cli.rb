@@ -3,6 +3,7 @@ class GroupVenture::CLI
   @@counter2 = 0
   @@counter3 = 0
   def call
+    GroupVenture::Scraper.scrape_coins
     top_icos
     menu
     good_bye
@@ -10,7 +11,7 @@ class GroupVenture::CLI
 
   def top_icos
     puts "top ICO's"
-    forge = GroupVenture::Scraper.scrape_coins
+    forge = GroupVenture::Coin.all
     forge.each do |coin|
       puts "#{coin.name}  #{coin.price}"
     end
@@ -18,7 +19,7 @@ class GroupVenture::CLI
 
   def menu
     input = nil
-    data = GroupVenture::Scraper.scrape_coins
+    data = GroupVenture::Coin.all
     while input != "exit"
       puts "enter the name of the coin for more information or type 'exit':"
       input = gets.strip.downcase
@@ -53,6 +54,8 @@ class GroupVenture::CLI
         end
 
       when "xrp"
+        coin = GroupVenture::Coin.find_by_name("XRP")
+        coin.amount +=1
         phrase = data[2].mc.gsub("\n\n\n", "\n-------------------------\n")
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"

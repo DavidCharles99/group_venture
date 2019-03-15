@@ -1,10 +1,12 @@
 class GroupVenture::Scraper
-  @@coins = []
+  # Refactor so that the Coin class keeps track of all of its own coins
+  # There should be no class variables in Scraper
+  # Coin should have a class variable
+  # When a new instance of Coin is created, it should be 'persisted' to the class variable
   def self.scrape_coins
-      @@coins << self.scrape_bitcoin
-      @@coins << self.scrape_ether
-      @@coins << self.scrape_xrp
-      @@coins
+      self.scrape_bitcoin
+      self.scrape_ether
+      self.scrape_xrp
     end
 
   def self.scrape_bitcoin
