@@ -1,7 +1,5 @@
 class GroupVenture::CLI
-  @@counter1 = 0
-  @@counter2 = 0
-  @@counter3 = 0
+
   def call
     GroupVenture::Scraper.scrape_coins
     top_icos
@@ -31,8 +29,9 @@ class GroupVenture::CLI
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-        @@counter1 += 1
-        puts "you have #{@@counter1} bitcoin, to see total balance type 'wallet'"
+        coin_obj1 = GroupVenture::Coin.find_by_name("Bitcoin")
+        coin_obj1.amount1 += 1
+        puts "you have #{coin_obj1.amount1} bitcoin, to see total balance type 'wallet'"
         puts "------------------------------------------------------"
         list
       else
@@ -45,8 +44,9 @@ class GroupVenture::CLI
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-          @@counter2 += 1
-          puts "you have #{@@counter2} ethereum, to see total balance type 'wallet'"
+          coin_obj2 = GroupVenture::Coin.find_by_name("Ether")
+          coin_obj2.amount2 += 1
+          puts "you have #{coin_obj2.amount2} ethereum, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
@@ -54,15 +54,14 @@ class GroupVenture::CLI
         end
 
       when "xrp"
-        coin = GroupVenture::Coin.find_by_name("XRP")
-        coin.amount +=1
         phrase = data[2].mc.gsub("\n\n\n", "\n-------------------------\n")
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-          @@counter3 += 1
-          puts "you have #{@@counter3} ripple, to see total balance type 'wallet'"
+          coin_obj2 = GroupVenture::Coin.find_by_name("Ether")
+          coin_obj2.amount2 += 1
+          puts "you have #{coin_obj2.amount2} ripple, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
@@ -70,9 +69,9 @@ class GroupVenture::CLI
         end
 
       when "wallet"
-        puts "bitcoin wallet =  [#{@@counter1}]"
-        puts "ethereum wallet = [#{@@counter2}]"
-        puts "ripple wallet =   [#{@@counter3}]"
+        puts "bitcoin wallet =  [#{amount1}]"
+        puts "ethereum wallet = [#{amount2}]"
+        puts "ripple wallet =   [#{amount3}]"
       end
 
      end
