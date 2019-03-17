@@ -59,9 +59,9 @@ class GroupVenture::CLI
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-          coin_obj2 = GroupVenture::Coin.find_by_name("Ether")
-          coin_obj2.amount2 += 1
-          puts "you have #{coin_obj2.amount2} ripple, to see total balance type 'wallet'"
+          coin_obj2 = GroupVenture::Coin.find_by_name("XRP")
+          coin_obj2.amount3 += 1
+          puts "you have #{coin_obj2.amount3} ripple, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
@@ -69,9 +69,9 @@ class GroupVenture::CLI
         end
 
       when "wallet"
-        puts "bitcoin wallet =  [#{amount1}]"
-        puts "ethereum wallet = [#{amount2}]"
-        puts "ripple wallet =   [#{amount3}]"
+        puts "bitcoin wallet =  [#{GroupVenture::Coin.find_by_name("Bitcoin").amount1}]"
+        puts "ethereum wallet = [#{GroupVenture::Coin.find_by_name("Ether").amount2}]"
+        puts "ripple wallet =   [#{GroupVenture::Coin.find_by_name("XRP").amount3}]"
       end
 
      end
