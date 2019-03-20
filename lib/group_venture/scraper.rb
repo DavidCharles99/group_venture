@@ -12,9 +12,9 @@ class GroupVenture::Scraper
   def self.scrape_bitcoin
     doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/bitcoin/"))
     coin = GroupVenture::Coin.new
-    coin.name =  doc.search("h1.details-panel-item--name").text
-    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text
-    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text
+    coin.name =  doc.search("h1.details-panel-item--name").text.gsub("\n", "")
+    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text.gsub("\n", "")
+    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text.gsub("\n\n", " ")
     coin
   end
 
@@ -22,9 +22,9 @@ class GroupVenture::Scraper
     url = "https://coinmarketcap.com/currencies/ethereum/"
     doc = Nokogiri::HTML(open(url))
     coin = GroupVenture::Coin.new
-    coin.name =  doc.search("h1.details-panel-item--name").text
-    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text
-    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text
+    coin.name =  doc.search("h1.details-panel-item--name").text.gsub("\n", "")
+    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text.gsub("\n", "")
+    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text.gsub("\n\n", " ")
     coin
   end
 
@@ -32,9 +32,9 @@ class GroupVenture::Scraper
     url = "https://coinmarketcap.com/currencies/ripple/"
     doc = Nokogiri::HTML(open(url))
     coin = GroupVenture::Coin.new
-    coin.name =  doc.search("h1.details-panel-item--name").text
-    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text
-    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text
+    coin.name =  doc.search("h1.details-panel-item--name").text.gsub("\n", "")
+    coin.price = doc.search("span.h2.text-semi-bold.details-panel-item--price__value").text.gsub("\n", "")
+    coin.mc = doc.search("table.table.cmc-table-striped.cmc-cc-summary-table").text.gsub("\n\n", " ") 
     coin
   end
 end

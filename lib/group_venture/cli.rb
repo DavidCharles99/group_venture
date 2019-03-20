@@ -8,60 +8,62 @@ class GroupVenture::CLI
   end
 
   def top_icos
+    num = 0
     puts "top ICO's"
     forge = GroupVenture::Coin.all
     forge.each do |coin|
-      puts "#{coin.name}  #{coin.price}"
+      puts "#{num += 1}  #{coin.name}  #{coin.price}"
     end
   end
+
 
   def menu
     input = nil
     data = GroupVenture::Coin.all
     while input != "exit"
-      puts "enter the name of the coin for more information or type 'exit':"
+      puts "enter the number next to the coin for more information or type 'exit':"
       input = gets.strip.downcase
       case input
 
-      when "bitcoin"
-        phrase = data[0].mc.gsub("\n\n\n", "\n-------------------------\n")
+      when "1"
+        phrase = data[0].mc
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-        coin_obj1 = GroupVenture::Coin.find_by_name("Bitcoin")
-        coin_obj1.amount1 += 1
-        puts "you have #{coin_obj1.amount1} bitcoin, to see total balance type 'wallet'"
+        coin_obj1 = GroupVenture::Coin.find_by_name("Bitcoin(BTC)")
+        coin_obj1.amount += 1
+        puts "you have #{coin_obj1.amount} bitcoin, to see total balance type 'wallet'"
         puts "------------------------------------------------------"
         list
       else
         list
         end
 
-      when "ether"
-        phrase = data[1].mc.gsub("\n\n\n", "\n-------------------------\n")
+      when "2"
+        phrase = data[1].mc
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-          coin_obj2 = GroupVenture::Coin.find_by_name("Ether")
-          coin_obj2.amount2 += 1
-          puts "you have #{coin_obj2.amount2} ethereum, to see total balance type 'wallet'"
+          coin_obj2 = GroupVenture::Coin.find_by_name("Ethereum(ETH)")
+          coin_obj2.amount += 1
+          puts "you have #{coin_obj2.amount} ethereum, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
           list
         end
 
-      when "xrp"
-        phrase = data[2].mc.gsub("\n\n\n", "\n-------------------------\n")
+      when "3"
+        phrase = data[2].mc
         puts "#{phrase}"
         puts "type 'y'/'n' to buy"
         usin = gets.strip.downcase
         if usin == "y"
-          coin_obj2 = GroupVenture::Coin.find_by_name("XRP")
-          coin_obj2.amount3 += 1
-          puts "you have #{coin_obj2.amount3} ripple, to see total balance type 'wallet'"
+          coin_obj3 = GroupVenture::Coin.find_by_name("XRP(XRP)")
+          coin_obj3.amount += 1
+          puts "you have #{coin_obj2.amount} ripple, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
@@ -69,26 +71,18 @@ class GroupVenture::CLI
         end
 
       when "wallet"
-        puts "bitcoin wallet =  [#{GroupVenture::Coin.find_by_name("Bitcoin").amount1}]"
-        puts "ethereum wallet = [#{GroupVenture::Coin.find_by_name("Ether").amount2}]"
-        puts "ripple wallet =   [#{GroupVenture::Coin.find_by_name("XRP").amount3}]"
+        puts "bitcoin wallet =  [#{GroupVenture::Coin.find_by_name("Bitcoin(BTC)").amount}]"
+        puts "ethereum wallet = [#{GroupVenture::Coin.find_by_name("Ethereum(ETH)").amount}]"
+        puts "ripple wallet =   [#{GroupVenture::Coin.find_by_name("XRP(XRP)").amount}]"
       end
 
      end
    end
 
    def list
-     puts "Bitcoin"
-     puts "(BTC)"
-     puts  ""
-     puts  ""
-     puts  "Ethereum"
-     puts  "(ETH)"
-     puts  ""
-     puts  ""
-     puts  "XRP"
-     puts  "(XRP)"
-
+     puts "1  Bitcoin(BTC)"
+     puts "2  Ethereum(ETH)"
+     puts "3  XRP(XRP)"
    end
 
    def good_bye
