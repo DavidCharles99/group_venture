@@ -63,7 +63,7 @@ class GroupVenture::CLI
         if usin == "y"
           coin_obj3 = GroupVenture::Coin.find_by_name("XRP(XRP)")
           coin_obj3.amount += 1
-          puts "you have #{coin_obj2.amount} ripple, to see total balance type 'wallet'"
+          puts "you have #{coin_obj3.amount} ripple, to see total balance type 'wallet'"
           puts "------------------------------------------------------"
           list
         else
